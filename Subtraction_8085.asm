@@ -1,0 +1,6 @@
+MVI B, 40H
+MVI C, 12H
+MOV A,B
+SUB C
+MOV D,A
+HLT
