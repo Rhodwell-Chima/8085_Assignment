@@ -1,0 +1,13 @@
+	
+	   JMP START_MAIN
+	
+	   IN 00
+	   OUT 01
+	   EI
+	   RET
+
+START_MAIN:	   MVI A,1D
+	   SIM
+	   EI
+
+IDLE_LOOP:	   JMP IDLE_LOOP

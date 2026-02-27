@@ -1,0 +1,6 @@
+	   MVI A,90
+	   OUT 03
+
+PPI_LOOP:	   IN 00
+	   OUT 01
+	   JMP PPI_LOOP

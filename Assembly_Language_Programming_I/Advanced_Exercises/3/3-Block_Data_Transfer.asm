@@ -1,0 +1,11 @@
+	   LXI H,2000
+	   LXI D,3000
+	   MVI C,0A
+
+TRANSFER_LOOP:	   MOV A,M
+	   STAX D
+	   INX H
+	   INX D
+	   DCR C
+	   JNZ TRANSFER_LOOP
+	   HLT

@@ -1,0 +1,17 @@
+	   LXI H,2000
+	   MVI C,10
+	   MVI B,3F
+
+SEARCH_LOOP:	   MOV A,M
+	   CMP B
+	   JZ DATA_FOUND
+	   INX H
+	   DCR C
+	   JNZ SEARCH_LOOP
+	   MVI A,FF
+	   STA 2050
+	   HLT
+
+DATA_FOUND:	   MOV A,L
+	   STA 2050
+	   HLT

@@ -1,0 +1,13 @@
+	
+	   JMP MAIN_PROGRAM
+	
+	   MVI A,AA
+	   OUT 01
+	   EI
+	   RET
+
+MAIN_PROGRAM:	   MVI A,0B
+	   SIM
+	   EI
+
+WAIT_INTERRUPT:	   JMP WAIT_INTERRUPT
