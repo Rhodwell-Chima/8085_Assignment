@@ -1,20 +1,31 @@
-// FIBONACCI SERIES GENERATION
+	   LDA 2010	// Loads the content of 2010H into accumulator
+	   MVI C,08	// Loads the 08h to C-register
+	   MVI D,00	// Loads the 00h to D-register
+	   MVI E,00	// Loads the 00h to E-register
 
-START:	   MVI C,09	// Counter
-	   LXI H,C050	// Memory Pointer
+START:	   RRC
+// All the bits of accumulator are shifted or rotated right. The CY flag is modified as
+	   JNC ZERO
+// Jump on no Carry(CY=0) to ZERO
+	   JC ONE
+// Jump on Carry(CY=1) to ONE
 
-X:	   MOV A,M
-	   INX H
-	   MOV B,M
-	   INX H
-	   ADD B
-	   DAA
-	   MOV M,A
-	   DCX H
-	   DCR C
-	   JNZ X
-	   RST 1
-// To run the Program simply load at memory location C050=01,C051=01
+ONE:	   INR D
+// Increment D-register to count number of 1's
+	   JMP END
+// Jump to END
 
-# ORG C050
-# DB 01H,01H
+ZERO:	   INR E
+// Increment E-register to count number of 0's
+	   JMP END
+// Jump to END
+
+END:	   DCR C
+// Decrement C-register
+	   JNZ START	// Jump on no Zero(Z=0) to START
+	   HLT
+// Stop processing
+// Set origin to dataset
+// initializes memory with one or more byte values
+# ORG 2010H
+# DB ADH
