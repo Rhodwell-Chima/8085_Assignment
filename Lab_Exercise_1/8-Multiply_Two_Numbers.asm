@@ -1,0 +1,9 @@
+	   MVI A,00
+	   MVI B,08
+	   MVI C,02
+
+REPEATED_ADDITION:	   ADD B
+	   DCR C
+	   JNZ REPEATED_ADDITION
+	   STA 2100
+	   HLT
