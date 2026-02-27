@@ -1,0 +1,19 @@
+	   MVI A,80
+	   OUT 01
+
+LED_LOOP:	   MVI A,FF
+	   OUT 01
+	   CALL TIME_DELAY
+	   MVI A,00
+	   OUT 01
+	   CALL TIME_DELAY
+	   JMP LED_LOOP
+
+TIME_DELAY:	   LXI B,FFFF
+
+DELAY_LOOP:	   DCX B
+	   MOV A,B
+	   ORA C
+	   JNZ DELAY_LOOP
+	   RET
+	   HLT
